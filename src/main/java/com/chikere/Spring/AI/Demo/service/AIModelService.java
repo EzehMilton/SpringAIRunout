@@ -1,17 +1,15 @@
 package com.chikere.Spring.AI.Demo.service;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 
+@RequiredArgsConstructor
 @Service
-public class AIService {
-    private ChatClient chatClient;
+public class AIModelService {
+    private final ChatClient chatClient;
 
-    public AIService(ChatClient chatClient) {
-        this.chatClient = chatClient;
-    }
-
-    public String getTResponseFromChatGPT(String prompt){
+    public String getResponseFromChatGPT(String prompt){
         return chatClient.prompt(prompt)
                 .call()
                 .content();
